@@ -2,6 +2,7 @@
 import os
 from flask import Flask # new
 from flask_sqlalchemy import SQLAlchemy
+
 # instantiate the db
 db = SQLAlchemy()
 # new
@@ -16,6 +17,8 @@ def create_app(script_info=None):
  # register blueprints
  from src.api.ping import ping_blueprint
  app.register_blueprint(ping_blueprint)
+ from src.api.users import users_blueprint
+ app.register_blueprint(users_blueprint)
  # shell context for flask cli
  @app.shell_context_processor
  def ctx():
