@@ -34,8 +34,8 @@ class Users(Resource):
     update_data = request.get_json()
     user.username = update_data.get('username', user.username)
     user.email = update_data.get('email', user.email)
-
     db.session.commit()
+    response_object = {'message': f'User {user_id} has been updated'}
     return user, 200
 
  def delete(self, user_id):
